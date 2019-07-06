@@ -1,0 +1,122 @@
+Multiprinter 
+O controle da multiprinter come‡a no painel .
+ 
+
+Vista de frente painel da L1800  Vista tras painel L1800
+ 
+
+
+Vista da placa do painel Epson L1800
+Aqui come‡amos as modifica‡“es para nossa impressora para funcionar com controle via celular.
+Como podem ver a placa possui 3 leds, 3 botoes e uma chave on/off .
+1 Led Power  este tem duas fun‡äes 
+1¦  indica se a impressora esta ligada ficando acesso ;
+ 2¦ indica quando a impressora esta recebendo dados fica piscando.
+2 Led Paper   este  tem 3 fun‡äes  
+1¦ se acesso indica falta papel 
+2¦ trabalha junto com terceiro led , podendo indicar duas outras situa‡äes
+ 1¦ se acesso indica erro geral
+ 2¦ se piscando indica necessidade de reset do contador de limpeza
+3 Led Ink  este tem 3 fun‡äes  como no casso do led paper
+   1¦ se acesso indica falta tinta obs o paper    tem de estar apagado
+   2¦  se acesso e o led paper tambem  indica erro geral
+  3¦ se piscando e o led paper tambem indica  reset
+Atravez do monitoramento destes leds o arduino pode obter informa‡äes do estado da impressora.
+A chave liga e desliga  pode ser ligada a um rele via  controle por um pino do arduino.
+ 
+ 
+
+O arduino pode ligar e desligar a impressora automaticamente. Este tipo de controle pode impedir que a impressora sofra maiores danos no caso da necessidade de interromper o processo de impressÆo.
+O primeiro botÆo esta abaixo do led paper vamos indentificalo como Button Paper  este tem a duas fun‡äes :
+1 De ejtar o papel; 
+2 Quando o led paper acesso se  pressionado  o button paper indica que foi colocado papel na  impressora (existe uma terceira fun‡Æo que fica para mais a frente).
+O segundo botÆo e o Button Ink (tinta, a gotinha) . 
+ 1 Este botÆo ao ser pressionado uma unica vez faz com que o carro se movimente .
+2 Se pressionado por 3 segundos ele inicia o processo de limpeza ou carregamento de tinta. 
+O terceiro mostra uma lixeira e o nossso Button Trash  ( Cancelar) ele cancela o processo de impressÆo. 
+A  nossa logica de programa‡Æo do arduino parte do conhecimento das opera‡äes deste painel .  Podemos iniciar nosso controle da maquina via celular.
+Come‡amos a definir os  pinos a ser usado no arduino e a variaveis necessarias ao controle:
+#define Led_Power 
+#define Led_ Paper
+#define Led_Ink
+#define Power_Printer
+#define Paper_Printer
+#define InK_Printer
+#define Trask_Printer 
+ Na frente de cada um devemos indicar qual o pino do arduino vai assumir a fun‡Æo 
+No caso do Power_Printer  estou usando o pino 8 de dados do arduino mega .
+#define Power_Printer 8
+Este pino esta definido em um pino de dados que vai trabalhar com a logica HIGH e LOW indica Alto ou Baixo 
+Nele vamos ligar um rel‚ que aciona com a logica LOW  e desliga com HIGH 
+No  setup do arduino temos de fazer duas coisas a primeira e dizer a ele se este pino vai ser um pino de entrada ou de saida, como ele vai enviar um nivel logico para o rele, ele e um pino de saida ou melhor Output.
+setup()
+pinMode(Power_Printer, OUTPUT);
+vamos definir que o nosso pino do rel‚ Power_Printer inicie em logica HIGH ou seja desligado fazemos isto com uma limha :
+digitalWrite(Power_Printer,HIGH); 
+Por enquanto nossa impressora se encontra desligada .
+Vamos criar uma rotina que Liga e desliga a impressora.
+void PowerOnOff() { // titulo da nossa rotina
+//definimos uma variavel que vai verificar o estado do rel‚  ela deve ser do tipo bool ou boolean significa verdadeiro ou falso (HIGH,LOW). Agora vamos fazer o arduino passar para esta variavel o valor que esta no pino Power_Printer, usamos uma linha de comando digitalRead, esta le o estado do pino. Lembre que no setup iniciamos ela no estado logico HIGH .
+ estadoRele = digitalRead(POWER_PRINTER);
+ // aqui usamos uma chave para  ver o valor da variavel. 
+  switch (estadoRele) {
+    case 0: // ligada
+      {// caso o estado do rele seja LOW vamos desligalo
+        digitalWrite(POWER_PRINTER, HIGH);// desliga
+        estadoRele = 0; // aqui ele fica no oposto do pino.
+        STATUS_PRINTER = 0; MsgMidia(18);// definimos mais uma variavel Status_Printer para saber se ela esta ligada ou nÆo enviamos uma mensage para saber seu status
+        break; // finaliza 
+      }
+      break;
+    case 1: //desligada  invertemos a parte inicial da nossa rotina assim funcionara como um botÆo liga desliga
+      {
+        digitalWrite(POWER_PRINTER, LOW); // liga
+        estadoRele = 1;
+        STATUS_PRINTER = 1;
+        check_msg_printer();
+        break;
+      }
+  }
+dentro deta rotina temos mais duas uma envia mensagem MsgMidia() e a outra check_msg_printer()  que vai verificar qual a mensage ela vai passar para nos apos checar o estado da impressora. Isto e necessario devido a impressora nem sempre  ficar ligada e pronta para imprimir, algumas vezes ela inicia fazendo limpeza e ainda pode dar algun erro, por isto e necessario chegar o seu eatdo apos o rele ligar. 
+Esdtavamos programando as primeiras rotinas do Button Power.
+par ligar e desligar. Agora vamos verificar o LED Power.
+
+void check_led_power_printer() {
+  long duracionledpower = pulseInLong(LED_POWER, HIGH, 10000);
+  switch (duracionledpower) {
+    case 0: {
+        STATUS_PRINTER = 0 ;// se led apagdo impressora desligada
+        check_msg_printer();
+        break;
+      }
+    case 1: {
+        STATUS_PRINTER = 1 ;// se acesso impressora ligada
+        check_msg_printer();
+        break;
+      }
+    default: {
+        STATUS_PRINTER = 2 ;// se piscando impressora imprimindo
+        check_msg_printer();
+        break;
+      }
+  }
+  check_leds_printer();// Verificamos os outros leds se todos desligados impressora pronta 
+}
+
+Os outros buttons possui mais de uma rotina vamos para o Paper.
+Este se pressionado quando o led esta apagado ele ejecta o papel, se o led estiver acesso informa que nÆo tem papel e necessario pressionar o button para a impressora verificar se foi colocado o papel e dar continuidade ao processo de impressÆo.
+A rotina de ligar este e mais simples
+void paperonoff() {
+   if (STATUS_PRINTER == 1){// verifica o status da impressora se ok 
+       if (STATUS_PAPER <= 1 )    
+           digitalWrite(PAPER_PRINTER, LOW); aciona o rele do paper 
+           delay(5);// apos 
+          digitalWrite(PAPER_PRINTER, HIGH);// ela desliga o rele 
+        else 
+          check_led_Printer();
+
+   }
+}
+
+  
+
