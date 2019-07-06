@@ -11,10 +11,10 @@ List of table parts
 28 Angle Structural Profile 30 X 30
 8 Angle Structural Profile 20x20
 1 plastic mdf sheet 710x1200
-4 Pillow block of 12mm scs42uu
+4 Pillow block of 12mm scs12uu
 2 axes 12mm x 600mm
-4 axle holder 12mm SHF 12
-2 step motors
+4 axis support 12mm SHF 12
+2 step motors nema 23 
 2 pulleys
 1 coupling
 1 trapezoidal spindle tr14 with 350mm
@@ -26,7 +26,7 @@ List of table parts
 2 adjustable stand
 2 fixed stand
 1 canvas for 330mm x 2010mm mat
-2 step motor support L
+2 step motor support L nema 23 
 1 Bearing 45x45 Flange C / Inner Bearing 8mm Kfl
 60 nut t m6 profile 30x30
 10 nut t m4 profile 20x20
