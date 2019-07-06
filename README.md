@@ -1,19 +1,7 @@
 # MultPrinter
-MultPrinter
-CDAS comercio@cdas.com.br  
-www.cdas.com.br
+ultPrinter CDAS comercio@cdas.com.br   www.cdas.com.br
+![Projeto MultPrinter Esteira](https://github.com/CDASCSI/MultPrinter/blob/master/Imagens/mult3030esteira2.jpg)
 
-Projeto de uma multiimpressora capaz de imprimir diretamente nos objetos
-A Multiprinter pode ser usada com varios tipos de tintas
-A Multiprinter UV pode imprimir diretamente em varios ojetos sem necessidade de tratamento quimico
-A impressora possui um controlador baseado no arduino mega com bluetooth 
-O sistema e capaz de controlar uma mesa com dois eixos, o eixo x usado para mover uma esteira 
-o y e usado para subir e descer a impressora até a altura do objeto
-O objeto colocado na esteira e detectado por um sensor a laser que junto com um sensor ultrason determina a altura de trabalho
-A impressora e comandada pelo celular, neste temos a opção de enviar comandos manuais e atuomaticos 
-No sistema do celular possui uma serie de variaveis que podem ser modificadas para atender a varios tipos de maquinas
-O sistema possui controles manuais que são monitorados pelo arduino. Durante o monitoramento o arduino determina os pontos criticos não permitindo ultrapassar.
-A multiprinter possui controles para Ligar a impressora, ejetar o objeto, Limpeza, e cancelamento da impressão via comando celular.
-A multiprinter no modo automatico detectada o objeto e inicia a impressão , a impressão pode ser feita em duas passadas caso utilize tinta branca. A multiprinter no modo manual permiti subir e descer a maquina até a altura desejada,  permiti tambem movimentar a esteira para frente e para tras para se ter o melhor posicionamento do objeto, apos corretamente definida a possição basta um click no botão select a impressora armazena a posição e ficara nela até que seja alterada podendo imprimir uma seguencia de objetos. 
+The Multiprinter can be used with various types of inks. The Multiprinter Ultraviolet can print directly on a variety of objects without the need for chemical treatment. The printer has a mega arduino-based controller with bluetooth. The system is capable of control a table with two axis. The x axis is used to move a treadmill and the y axis is used to up and to down the printer up to the height of the object. The object is placed on the treadmill and detected by a laser sensor that together with an ultrasonic sensor determines the height of object. The printer is controlled by a mobile phone app. This app has an option to send manual and automatic commands and has a series of variables that can be modified to several types of printers. The app has manual controls that are monitored by the Arduino. During monitoring, the Arduino determines the critical points not allowing to exceed them. The Multiprinter has controls to turn on the printer, to eject the object, to load ink, and to cancel the printing via app. In the automatic mode, the Multiprinter detects the object and starts printing. The printing can be done in two passes if you use white paint. In the manual mode, the Multiprinter allows to up and to down the printer to the desired height. It also allows to move the treadmill forwards and backwards to have the best positioning of the object. After properly defined the position, just click on the selection button and the printer will store it. It will can print a sequence of objects and remain in that position until it is changed.
 
-O codigo da Multiprinter para o celular e o arquivo com extensão .apk e para o Arduivo o .ino 
+The Multiprinter has two files: .apk file extension to be used with a mobile phone and .ino file extension to be used with Arduino.
