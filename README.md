@@ -16,4 +16,4 @@ O sistema possui controles manuais que são monitorados pelo arduino. Durante o 
 A multiprinter possui controles para Ligar a impressora, ejetar o objeto, Limpeza, e cancelamento da impressão via comando celular.
 A multiprinter no modo automatico detectada o objeto e inicia a impressão , a impressão pode ser feita em duas passadas caso utilize tinta branca. A multiprinter no modo manual permiti subir e descer a maquina até a altura desejada,  permiti tambem movimentar a esteira para frente e para tras para se ter o melhor possicionamento do objeto, apos corretamente definida a possição basta uim click no botão select a impressora armazena a posição e ficara nela até que seja alterada podendo imprimir uma seguencia de objetos. 
 
-O codigo da Multiprinter para o celular e o arquino com extensão .apk e para o Arduino o .ino 
+O codigo da Multiprinter para o celular e o arquivo com extensão .apk e para o Arduivo o .ino 
