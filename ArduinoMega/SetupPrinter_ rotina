@@ -1,0 +1,28 @@
+/* MultPrinter
+Rotina SetuPrinter
+Esta rotina inicia a configuração dos pinos e as nossas variveis no arduino mega
+
+*/
+void SetupPrinter() {
+  pinMode(LED_INK, INPUT_PULLUP); // internal pullup input pin 2
+  pinMode(LED_PAPER, INPUT_PULLUP); // internalเป็น pullup input pin 3
+  pinMode(LED_POWER, INPUT_PULLUP);// sensor impressao
+  pinMode(COVER_OPEN, INPUT_PULLUP);// sensor tampa aberta não tem na L1800, serve para outros modelos
+  pinMode(TRASH_PRINTER, OUTPUT); // rele lixeira impressora
+  pinMode(INK_PRINTER , OUTPUT);// rele tinta impressora
+  pinMode(PAPER_PRINTER, OUTPUT); // rele liga papel
+  pinMode(POWER_PRINTER , OUTPUT); // rele liga desliga impressora
+  digitalWrite(POWER_PRINTER , HIGH);// rele onoff desligado
+  estadoRele = 1; STATUS_PRINTER = 0;// o estado do rele power e o Status da impressora 
+  digitalWrite(TRASH_PRINTER, HIGH);// rele lixeira desligado
+  STATUS_TRASH = 0; 
+  digitalWrite(INK_PRINTER, HIGH);//rele tinta desligado
+  STATUS_INK = 0;
+  digitalWrite(PAPER_PRINTER, HIGH);//rele  papel desligado
+  STATUS_PAPER = 0;
+  pinMode(ASF_SIGNAL, OUTPUT);
+  pinMode(PE_SIGNAL, OUTPUT);
+  digitalWrite(PE_SIGNAL, HIGH);
+  PAST_COUNT = 0;
+  PE_STATE = 1;
+}
