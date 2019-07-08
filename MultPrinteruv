@@ -18,7 +18,17 @@ No carro de impressão vamos colar uma fita branca, esta sera usada para detecta
 A nossa placa de led vai ser ligada a uma sensor de obstaculo infravermelho para Arduino. Este sensor reflete a luz em objetos brancos.
 Assim ele vai ligar os led's quando o carro estiver fora da estação de limpeza e desligar assim que entrar nela. 
 Esta parte não necessita do controle do arduino funcionara como um interruptor brm sofisticado a prova de falhas nos contatos.
-
-
+No chassi da impressora tem uma barra com um corte retangular pronto para adicionar o sensor.
+No chassi dela ja existe alguns sensores que vamos utilizar ligados ao arduino 
+1 Sensor PE nos vamos simular ele atrves do arduino 
+2 Sensor ASF este vamos ler seus sinais para avançar a esteira(treadmill)
+3 Sensor Encoder do disco, este comanda o nosso motor treadmill para frente e para tras.
+4 Sensor PW  este vamos simular no arduino 
+Ainda temos 5 o sensor Encoder da fita que futuramente poderemos usalo para mover ocarro até determicada posição.
+Ainda vamos acrecentar :
+1 Sensor receptor laser  este detectarar o objeto colocado na esteira 
+1 Emissor Laser emite um feixe de laser diretamente no nosso receptor que ao ser enterrompido indica o objeto
+1 Um sensor Ultrasom  este envia e receber ondas de som que ao bater em um obstaculo nos fornece a distancia que se encontra
+1 um sensor de linha trct5000 este vai ler uma linha fina impressa na nossa esteira ele e capaz de nos dar exatamente a posição da esteira. 
 
   
