@@ -1,5 +1,13 @@
 Multiprinter UV
 
+A tinta UV tem suas vantagens e desvantagens.
+A maior vantagem e poder usar em varios tipos de materiais e imprimir diretamente neles.
+A maior desvantagen esta no tipo de tinta uv, a uma tinta uv no comercio que usa um solvente que é inimigo numero um da cabeça de impressão
+ele com o tempo derrete a cabeça. Há tinta uv mais bem elaborada que da mais lucro no seu uso porem é dificil encontrar no comercio.
+A tinta uv usa na sua mistura um elemento sensivel a luz este é mais pesado do que o liquido que o envolve isto e uma desvantagem pois este por
+por ser mais pesado rapidamente ele se deposita no fundo do reservatorio fazendo a tinta perder sua qualidade. Nas impressoras uv industriais
+tem um agitador que mistura constantemente a tinta. 
+
 Adotamos um sistema de led's uv frio.
 Os ledas atualmente usados nas impressoras UV necessita de refrigeração e demanda muita potencia para curar a tinta. 
 Na multprinter usamos led's smd com baixa potencia porem com uma itensidade luminosa gigante. 
