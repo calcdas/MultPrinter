@@ -1,0 +1,6 @@
+Multiprinter UV
+
+Adotamos um sistema de led's uv frio.
+Os ledas atualmente usados nas impressoras UV necessita de refrigeração e demanda muita potencia para curar a tinta. 
+Na multprinter usamos led's smd com baixa potencia porem com uma itensidade luminosa gigante. 
+A cura da tinta depende da intensidade da luz uv quanto maior mais rapido a sua secagem.
