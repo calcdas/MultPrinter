@@ -14,4 +14,11 @@ Na multprinter usamos led's smd com baixa potencia porem com uma itensidade lumi
 A cura da tinta depende da intensidade da luz uv quanto maior mais rapido a sua secagem.
 Em baixo do carro de impressão entre o sensor pw e a cabeça tem um epaço de 3,5 x 2,1 cm 
 o suficiente para colocarmos uma serie de led's smd.
+No carro de impressão vamos colar uma fita branca, esta sera usada para detectar a posição do carro ao entrar e sair da estação de limpeza.
+A nossa placa de led vai ser ligada a uma sensor de obstaculo infravermelho para Arduino. Este sensor reflete a luz em objetos brancos.
+Assim ele vai ligar os led's quando o carro estiver fora da estação de limpeza e desligar assim que entrar nela. 
+Esta parte não necessita do controle do arduino funcionara como um interruptor brm sofisticado a prova de falhas nos contatos.
+
+
+
   
