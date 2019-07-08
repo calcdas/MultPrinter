@@ -7,14 +7,14 @@ Vista de frente painel da L1800  Vista tras painel L1800
 
 
 Vista da placa do painel Epson L1800
-Aqui come‡amos as modifica‡“es para nossa impressora para funcionar com controle via celular.
+Aqui come‡amos as modificações para nossa impressora para funcionar com controle via celular.
 Como podem ver a placa possui 3 leds, 3 botoes e uma chave on/off .
-1 Led Power  este tem duas fun‡äes 
+1 Led Power  este tem duas funções 
 1¦  indica se a impressora esta ligada ficando acesso ;
  2¦ indica quando a impressora esta recebendo dados fica piscando.
-2 Led Paper   este  tem 3 fun‡äes  
+2 Led Paper   este  tem 3 funções  
 1¦ se acesso indica falta papel 
-2¦ trabalha junto com terceiro led , podendo indicar duas outras situa‡äes
+2¦ trabalha junto com terceiro led , podendo indicar duas outras situações
  1¦ se acesso indica erro geral
  2¦ se piscando indica necessidade de reset do contador de limpeza
 3 Led Ink  este tem 3 fun‡äes  como no casso do led paper
@@ -27,7 +27,7 @@ A chave liga e desliga  pode ser ligada a um rele via  controle por um pino do a
  
 
 O arduino pode ligar e desligar a impressora automaticamente. Este tipo de controle pode impedir que a impressora sofra maiores danos no caso da necessidade de interromper o processo de impressÆo.
-O primeiro botÆo esta abaixo do led paper vamos indentificalo como Button Paper  este tem a duas fun‡äes :
+O primeiro botÆo esta abaixo do led paper vamos indentificalo como Button Paper  este tem a duas funções :
 1 De ejtar o papel; 
 2 Quando o led paper acesso se  pressionado  o button paper indica que foi colocado papel na  impressora (existe uma terceira fun‡Æo que fica para mais a frente).
 O segundo botÆo e o Button Ink (tinta, a gotinha) . 
@@ -35,9 +35,16 @@ O segundo botÆo e o Button Ink (tinta, a gotinha) .
 2 Se pressionado por 3 segundos ele inicia o processo de limpeza ou carregamento de tinta. 
 O terceiro mostra uma lixeira e o nossso Button Trash  ( Cancelar) ele cancela o processo de impressÆo. 
 A  nossa logica de programa‡Æo do arduino parte do conhecimento das opera‡äes deste painel .  Podemos iniciar nosso controle da maquina via celular.
+Primeiro vamos criar uma serie de variveis que nos dara o status
+bool STATE_RELAY; // estado atual do relé 
+int STATUS_PRINTER = 0;// O DESLIGADA, 1 LIGADA, 2 IMPRIMINDO,3 PAPEL, 4 TINTA ACABANDO,5 TINTA ACABO,6 RESET, 7 ERRO GERAL 
+int STATUS_PAPER = 0;// 0 NORMAL,1 PAPEL ACABO,2 PISCANDO JUNTO INK RESET,3 ACESSO JUNTO INK ERRO GERAL
+int STATUS_INK = 0;// 0 NORMAL.1 PISCANDO TINTA ACABANDO,2 ACESSO TINTA ACABOU ,3 PISCANDO JUNTO PAPER RESET, 4 ACESSO JUNTO PAPER ERRO GERAL
+int STATUS_TRASH = 0;//0 NORMAL,1 CANCELA IMPRESSÃO
+
 Come‡amos a definir os  pinos a ser usado no arduino e a variaveis necessarias ao controle:
 #define Led_Power 
-#define Led_ Paper
+#define Led_Paper
 #define Led_Ink
 #define Power_Printer
 #define Paper_Printer
@@ -47,7 +54,7 @@ Come‡amos a definir os  pinos a ser usado no arduino e a variaveis necessarias
 No caso do Power_Printer  estou usando o pino 8 de dados do arduino mega .
 #define Power_Printer 8
 Este pino esta definido em um pino de dados que vai trabalhar com a logica HIGH e LOW indica Alto ou Baixo 
-Nele vamos ligar um rel‚ que aciona com a logica LOW  e desliga com HIGH 
+Nele vamos ligar um relé‚ que aciona com a logica LOW  e desliga com HIGH 
 No  setup do arduino temos de fazer duas coisas a primeira e dizer a ele se este pino vai ser um pino de entrada ou de saida, como ele vai enviar um nivel logico para o rele, ele e um pino de saida ou melhor Output.
 setup()
 pinMode(Power_Printer, OUTPUT);
