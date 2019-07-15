@@ -1,0 +1,154 @@
+void MsgMidia(int statusMsg ) {
+  switch (statusMsg)
+  {
+    case 0:
+      Serial.println(TEXT_CHECKING);
+      Buzzerok();
+      break;
+
+    case 1:
+      Serial.println(TEXT_LASER_DETECTOR);
+      Buzzerok();
+      break;
+
+    case 2:
+       Serial.println( TEXT_MIDIA_DETECT);
+       Buzzerok();
+      break;
+
+    case 3:
+      Serial.println( TEXT_ERROR);
+       Serial.println( TEXT_NOT_MIDIA_DETECT);
+      Buzzernot(); 
+      break;
+
+    case 4:
+      Serial.println( TEXT_PLACE_MIDIA);
+       Serial.println( TEXT_PRESS_BACK);
+       Buzzerok();
+      break;
+
+    case 5:
+      Serial.println( TEXT_WAIT);
+       Serial.println( TEXT_PRINTING_MIDIA);
+       Buzzerok();
+      break;
+
+    case 6:
+      Serial.println( TEXT_WAIT);
+       Serial.println( TEXT_EJECTING);
+       Buzzerok();
+      break;
+
+    case 7:
+      Serial.println( TEXT_PRINTING);
+       Serial.println( TEXT_LAST_SECOND);
+       Buzzerok();
+      break;
+
+    case 8:
+      Serial.println( TEXT_WAIT);
+       Serial.println(TEXT_RETURNING);
+       Buzzerok();
+      break;
+
+    case 9:
+      Serial.println(TEXT_MANUAL_MODE);
+       Serial.println( TEXT_STARTING);
+       Buzzerok();
+      break;
+
+    case 10:
+      Serial.println( TEXT_CALLING);
+       Buzzerok();
+      break;
+
+    case 11:
+      Serial.println( TEXT_AUTOMATIC_MODE );
+       Serial.println( TEXT_STARTING);
+       Buzzerok();
+      break;
+
+    case 12:
+      Serial.println("subir");
+       Buzzerok();
+      break;
+
+    case 13:
+      Serial.println("detector");
+       Buzzerok();
+      break;
+
+    case 14:
+      Serial.println("gravar");
+       Buzzerok();
+      break;
+
+    case 15:
+      Serial.println(TEXT_PRINTER);
+      Serial.println( TEXT_LOADING_INK);
+       Buzzerok();
+      break;
+
+    case 16:
+      Serial.println(TEXT_PRINTER);
+      Serial.println( TEXT_CANCELING);
+       Buzzerok();
+      break;
+
+    case 17:
+      Serial.println(TEXT_PRINTER);
+      Serial.println( TEXT_ERROR_MIDIA );
+      Buzzernot(); 
+      break;
+
+    case 18:
+       Serial.println(TEXT_PRINTER);
+      Serial.print( TEXT_OFF );
+       Buzzerok();
+      break;
+
+    case 19:
+      Serial.println(TEXT_PRINTER);
+      Serial.print( TEXT_ON );
+      Buzzerok();
+      break;
+
+    case 20:
+      Serial.println(TEXT_PRINTER);
+      Serial.println(TEXT_TURNING_OFF);
+       Buzzerok();
+      break;
+
+    case 21:
+      Serial.println(TEXT_PRINTER);
+      Serial.println(TEXT_GENERAL_ERROR );
+      Buzzernot(); 
+      break;
+
+    case 22:
+     Serial.println(TEXT_PRINTER);
+      Serial.println( TEXT_INK_ENDING);
+       Buzzerok();
+      break;
+
+    case 23:
+      Serial.println(TEXT_PRINTER);
+      Serial.println( TEXT_INK_IS_OVER);
+      Buzzerok();
+      break;
+
+    case 24:
+     Serial.println(TEXT_PRINTER);
+      Serial.println( TEXT_PAPER);
+       Buzzerok();
+      break;
+
+    case 25:
+      Serial.println(TEXT_PRINTER);
+      Serial.println(TEXT_RESET_SPONGE);
+       Buzzerok();
+      break;
+
+  }
+}
