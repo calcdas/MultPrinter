@@ -1,0 +1,9 @@
+void inkclean() {
+  //while (STATUS_INK = 0)
+  if (STATUS_PRINTER == 1){//&& STATUS_INK == 1){
+   digitalWrite(INK_PRINTER, LOW);
+    MsgMidia(15); delay(3000);
+   digitalWrite(INK_PRINTER, HIGH);
+  }
+  //check_status_printer();
+}
