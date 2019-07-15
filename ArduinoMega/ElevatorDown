@@ -1,0 +1,11 @@
+void ElevatorDown(){
+  SetMotory();
+  ELEVATOR_DISTANCE_CURRENT = Ultrasom();
+  Serial.println(ELEVATOR_DISTANCE_CURRENT);
+  if (ELEVATOR_DISTANCE_CURRENT <= ELEVATOR_DISTANCE_MAX ){
+    if (LaserDetec( ))
+     if (ELEVATOR_DISTANCE_CURRENT < ELEVATOR_DISTANCE_MAX && ELEVATOR_DISTANCE_CURRENT >= ELEVATOR_DISTANCE_MIN )
+         Serial.println(ELEVATOR_DISTANCE_CURRENT);
+          MOTOR_ELEVATOR.motorStop();
+          MOTOR_ELEVATOR.enable(LOW);
+  }
