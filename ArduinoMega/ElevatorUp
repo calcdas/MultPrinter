@@ -1,0 +1,12 @@
+void ElevatorUp(){
+  SetMotory();
+  ELEVATOR_DISTANCE_CURRENT = Ultrasom();
+  Serial.println(ELEVATOR_DISTANCE_CURRENT);
+  if (ELEVATOR_DISTANCE_CURRENT < ELEVATOR_DISTANCE_MAX )
+      MOTOR_ELEVATOR.motorMove(HIGH);
+      ELEVATOR_DISTANCE_CURRENT = Ultrasom();
+      if (ELEVATOR_DISTANCE_CURRENT >= ELEVATOR_DISTANCE_MAX )
+         Serial.println(ELEVATOR_DISTANCE_CURRENT);
+          MOTOR_ELEVATOR.motorStop();
+          MOTOR_ELEVATOR.enable(LOW);
+}
