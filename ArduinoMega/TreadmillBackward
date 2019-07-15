@@ -1,0 +1,7 @@
+void TreadmillBackward(){
+ MOTOR_TREADMILL.motorMove(HIGH);
+ delayMicroseconds(3); // Step Speed
+ MOTOR_TREADMILL.motorStop();
+  TREADMILL_POSITION--; 
+   Serial.println(TREADMILL_POSITION);
+}
