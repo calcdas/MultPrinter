@@ -1,0 +1,7 @@
+void inkonoff() {
+  if (STATUS_PRINTER == 1){
+   digitalWrite(INK_PRINTER, LOW);
+   delay(1000);
+   digitalWrite(INK_PRINTER, HIGH);
+  }
+}
