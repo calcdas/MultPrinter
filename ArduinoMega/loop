@@ -17,10 +17,10 @@ void loop() {
              ManualMode(0,1);
     }
     else if (command == 'P') {// LIGAR IMPRESSORA
-           PrinterOnOff();
+           PrinterOnOff(1);
     }
     else if (command == 'p') {//DESLIGAR IMPRESSORA
-           PrinterOnOff();
+           PrinterOnOff(0);
     }
    
     else if (command == 'I') {//CARREGANDO TINTA
