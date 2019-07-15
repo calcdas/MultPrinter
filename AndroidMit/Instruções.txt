@@ -1,3 +1,7 @@
 MultPrinter
 Para instalar o arquivo APK  siga as instruções deste link
 https://www.softdownload.com.br/como-instalar-aplicativos-apk-android.html
+
+
+Multiprinter has an app ready to work with HM10 or MLT-BT05.
+The Arduino send and receive parameter screen is missing.
