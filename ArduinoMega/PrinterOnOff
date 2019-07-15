@@ -1,0 +1,20 @@
+void PrinterOnOff(int onoff) {
+  STATE_RELAY = digitalRead(POWER_PRINTER);
+  switch (onoff) {
+    case 0: // ligada
+      {
+        digitalWrite(POWER_PRINTER, HIGH);// desliga
+        STATE_RELAY = 0;
+        STATUS_PRINTER = 0; MsgMidia(18);
+        break;
+      }
+      break;
+    case 1: //desligada
+      {
+        digitalWrite(POWER_PRINTER, LOW); // liga
+        STATE_RELAY = 1; STATUS_PRINTER = 1;MsgMidia(19);
+        //check_msg_printer();
+        break;
+      }
+  }
+}
