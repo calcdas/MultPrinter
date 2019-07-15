@@ -23,10 +23,10 @@ void loop() {
            PrinterOnOff();
     }
    
-    else if (command == 'I') {//LIMPEZA DA TINTA
+    else if (command == 'I') {//CARREGANDO TINTA
              inkclean();
     }
-    else if (command == 'i') {//LIMPEZA DA TINTA
+    else if (command == 'i') {//MOVE O CARRO DA IMPRESSORA
            inkonoff();
     }
     else if (command == 'R') {// LIBERAR PAPEL
@@ -42,13 +42,13 @@ void loop() {
     else if (command == 'D') {//ELEVADOR DESCE
            ElevatorDown();
     }
-    else if (command == 'B') {// ESTEIRA TRAS
+    else if (command == 'B') {// ESTEIRA PARA TRAS
          // ManualMode(1,1);
           TreadmillBackward();
       EJECT == true;
       PUTON == false;
     }
-    else if (command == 'F') {//ESTEIRA FRENTE
+    else if (command == 'F') {//ESTEIRA PARA FRENTE
          // ManualMode(1,2); 
          TreadmillForward();
       EJECT == false;
