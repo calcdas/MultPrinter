@@ -1,0 +1,21 @@
+int Ultrasom() {
+  digitalWrite(TRIGGER_PIN, LOW); // ponemos el pin TRIGGER en LOW
+  delayMicroseconds(2); // esperamos 2 milisegundos
+  digitalWrite(TRIGGER_PIN, HIGH); // ponemos el pin TRIGGER en HIGH
+  delayMicroseconds(10); // lo temos activado durante 10 milisegundos
+  digitalWrite(TRIGGER_PIN, LOW); // ponemos el pin del TRIGGER en LOW
+   DURATION = pulseIn(ECHO_PIN, HIGH); // Esperamos a que el pin del ECHO devuelva HIGH, y guardamos el tiempo
+  long Distancia_mm = fDistancia( DURATION); // Función para calcular la distancia
+  return Distancia_mm;
+}
+
+// calcular a distancia
+long fDistancia(long tiempo)
+{
+  // Calculamos a distancia en mm
+  // ((tiempo)*(Velocidad del sonido)/ el camino se hace dos veces)
+
+  long DistanceCalc; // Variable para os cálculos
+  DistanceCalc = (tiempo / 2.9) / 2; // Cálculos en milímetros
+  return DistanceCalc; // Devolvemos calculo
+}
