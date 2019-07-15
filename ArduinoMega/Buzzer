@@ -1,0 +1,11 @@
+void Buzzerok(){
+  tone(BUZZER, 440, 40);
+  delay(50);
+  noTone(BUZZER); 
+}
+
+void Buzzernot(){
+  tone(BUZZER, 494, 100); 
+  delay(200); 
+  noTone(BUZZER);
+}
