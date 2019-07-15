@@ -1,0 +1,8 @@
+void paperonoff() {
+   if (STATUS_PRINTER == 1){
+    // if (STATUS_PAPER <= 1)
+       digitalWrite(PAPER_PRINTER, LOW);
+     MsgMidia(24); delay(1000);
+       digitalWrite(PAPER_PRINTER, HIGH);
+   }
+}
