@@ -1,0 +1,7 @@
+void trashonoff() {
+  if (STATUS_PRINTER == 1){
+   digitalWrite(TRASH_PRINTER,LOW);// LIGA 
+    MsgMidia(16); delay(1000);
+   digitalWrite(TRASH_PRINTER,HIGH);// DESLIGA
+  }
+}
