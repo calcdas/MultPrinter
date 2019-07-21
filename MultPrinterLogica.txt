@@ -1,3 +1,91 @@
+Welcome to the MultPrinter wiki!
+Multiprinter 
+The multiprinter control starts on the panel.
+ ![Painel](https://github.com/CDASCSI/MultPrinter/blob/master/Imagens/PainelL1800mp.png)
+ 
+
+Front view panel of the L1800 
+  ![Placa Painel](https://github.com/CDASCSI/MultPrinter/blob/master/Imagens/PlacaPainelL1800MP.png)
+ 
+
+
+View of the Epson L1800 panel board
+![Placa Painel Solda](https://github.com/CDASCSI/MultPrinter/blob/master/Imagens/PlacaPL1800MP.png)
+
+Here we will start modifying our printer to work with mobile control.
+As you can see the board has 3 leds, 3 buttons and an on / off switch.
+1 Led Power This has two functions
+1| indicates whether the printer is turned on;
+ 2| indicates when the printer is receiving data blinks.
+2 Led Paper this has 3 functions
+1| if access indicates missing paper
+2| works together with a third led and can indicate two other situations
+ 1 if access indicates general error
+ 2| If blinking indicates need to reset the cleaning counter
+3 Led Ink this has 3 functions as in case of led paper
+   1| if access indicates ink is missing, the paper must be off
+   2| access and led paper also indicates general error
+  3| flashing and led paper also indicates reset
+Through the monitoring of these leds the arduino can obtain printer status information.
+The on / off switch can be attached to a control relay through an arduino pin.
+ ![Relay](https://github.com/CDASCSI/MultPrinter/blob/master/Imagens/ReleMP.png)
+ 
+
+The Arduino can turn the printer on and off automatically. This type of control can prevent the printer from being damaged in the event of the need to interrupt the printing process.
+The first button is below the led paper let's identify it as Button Paper this has two functions:
+1 Of paper or paper;
+2 When the paper access led is pressed, the paper button indicates that paper has been loaded in the printer (there is a third feature that goes forward).
+The second button is Button Ink (ink, droplet).
+ 1 This button when pressed once causes the carriage to move.
+2 If pressed for 3 seconds, it starts the cleaning or ink loading process. 
+The third one shows a bin and our Button Trash cancels the printing process.
+Our arduino programming logic is part of our knowledge of the operations of this panel. We can start our machine control via cell phone.
+We started to define the pins to be used in arduino and the variables needed to control:
+#define Led_Power
+#define Led_ Paper
+#define Led_Ink
+#define Power_Printer
+#define Paper_Printer
+#define InK_Printer
+#define Trask_Printer
+ In front of each one we must indicate which pin of the arduino will assume the function
+In the case of Power_Printer I am using pin 8 of mega arduino data.
+#define Power_Printer 8
+This pin is defined on a data pin that will work with the logic HIGH and LOW indicates High or Low
+In it we will connect a rel, that it activates with the logic LOW and it turns off with HIGH
+In arduino setup we have to do two things first and tell him if this pin will be an input pin or an output pin, as it will send a logic level to the relay, it is an output pin or better output.
+setup ()
+
+pinMode (Power_Printer, OUTPUT);
+let's define that our relay pin, Power_Printer starts in HIGH logic or is off we do this with a filam:
+digitalWrite (Power_Printer, HIGH);
+For now our printer is off.
+Let's create a routine that turns the printer on and off.
+void PowerOnOff () {// title of our routine
+// define a variable that will check the state of the rel, it must be of type bool or boolean means true or false (HIGH, LOW). Now let's make the arduino pass to this variable the value that is in the Power_Printer pin, we use a digitalRead command line, this is the state of the pin. Remember that in setup we start it in the logical state HIGH.
+ statusRele = digitalRead (POWER_PRINTER);
+ // here we use a key to see the value of the variable.
+  switch (stateRele) {
+    case 0: // on
+      {// if the state of the relay is LOW, we'll turn it off
+        digitalWrite (POWER_PRINTER, HIGH) // turn off
+        stateRele = 0; // here it is in the opposite of the pin.
+        STATUS_PRINTER = 0; MsgMidia (18); // set another Status_Printer variable to see if it is linked or we do not send a message to know its status
+        break; // ends
+      }
+      break;
+    case 1: // off we invert the initial part of our routine so it will work as a button turns on
+      {
+        digitalWrite (POWER_PRINTER, LOW); // turns on
+        stateRele = 1;
+        STATUS_PRINTER = 1;
+        check_msg_printer ();
+        break;
+      }
+  }
+inside deta routine we have two more one send message MsgMidia () and the other check_msg_printer () that will check what message it will pass to us after we check the state of the printer. This is necessary because the printer is not always on and ready to print, sometimes it starts cleaning and still can give some error, so it is necessary to get your data after the relay.
+
+
 Multiprinter 
 O controle da multiprinter come‡a no painel .
  
