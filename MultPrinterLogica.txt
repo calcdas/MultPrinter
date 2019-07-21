@@ -6,6 +6,11 @@ Vista de frente painel da L1800  Vista tras painel L1800
  
 
 
+Luzes
+1	 ligar
+2	 papel
+3	 tinta
+
 Vista da placa do painel Epson L1800
 Aqui come‡amos as modificações para nossa impressora para funcionar com controle via celular.
 Como podem ver a placa possui 3 leds, 3 botoes e uma chave on/off .
