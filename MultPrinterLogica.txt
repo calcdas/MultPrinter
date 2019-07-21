@@ -87,7 +87,7 @@ inside deta routine we have two more one send message MsgMidia () and the other 
 
 
 Multiprinter 
-O controle da multiprinter come‡a no painel .
+O controle da multiprinter começa no painel .
  
 
 Vista de frente painel da L1800  Vista tras painel L1800
