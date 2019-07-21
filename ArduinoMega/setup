@@ -1,0 +1,28 @@
+void setup() {
+  Serial.begin(9600);
+  Serial3.begin(9600); // default baud rate
+  pinMode(E_STOP, INPUT_PULLUP);
+  digitalWrite(E_STOP, HIGH);
+  pinMode(SD_CS_PIN, OUTPUT);
+  digitalWrite(SD_CS_PIN, HIGH);
+  pinMode(LASER_EMISSOR, OUTPUT);
+  digitalWrite(LASER_EMISSOR, LOW);
+  pinMode(LASER_RECEPTOR, INPUT);
+  pinMode(POWER_LED, OUTPUT);
+  digitalWrite(POWER_LED, HIGH);//Led Ligado
+  pinMode(TRIGGER_PIN, OUTPUT); // Pin del TRIGGER lo ponemos en output
+  pinMode(ECHO_PIN, INPUT); // Pin del ECHO lo ponemos en input
+  sdsetup();
+  MOTOR_TREADMILL.pinConfig(MOTOR_TREADMILL_ENABLE, MOTOR_TREADMILL_STEP, MOTOR_TREADMILL_DIR);
+  MOTOR_TREADMILL.enable(LOW);
+  MOTOR_ELEVATOR.pinConfig(MOTOR_ELEVATOR_ENABLE, MOTOR_ELEVATOR_STEP, MOTOR_ELEVATOR_DIR);
+  MOTOR_ELEVATOR.enable(LOW);
+  TREADMILL_STATE = 1;  // Isso enviará o esteira para a posição inicial.
+  TREADMILL_POSITION = 0;
+  TREADMILL_COUNT = 0;
+  Setup_Printer();
+  pinMode(BUZZER, OUTPUT);
+  // attachInterrupt (LED_INK, check_leds_printer , RISING);
+  //attachInterrupt (LED_PAPER, check_leds_printer , RISING);
+  //Msg_Midia(0);
+}//End Setup
