@@ -1,0 +1,23 @@
+bool check_Laser( ) {
+  digitalWrite(LASER_EMISSOR, HIGH);// liga laser
+  Msg_Midia(1);
+  while (digitalRead(LASER_RECEPTOR) == HIGH){
+         MOTOR_ELEVATOR.motorMove(HIGH);
+         ELEVATOR_POSITION --;
+         if (ELEVATOR_POSITION = ELEVATOR_DISTANCE_MIN){
+            Msg_Midia(3);
+            check_Elevator();
+            break;
+         }
+     
+   }
+     digitalWrite(LASER_EMISSOR, LOW); // desliga Laser
+     MOTOR_ELEVATOR.motorStop();// para motor
+     MOTOR_ELEVATOR.enable(LOW);// desliga o driver
+     ELEVATOR_DISTANCE_CURRENT = Ultrasom(); //mede a distancia  
+     ELEVATOR_POSITION = ELEVATOR_DISTANCE_CURRENT;
+     Serial.println(ELEVATOR_DISTANCE_CURRENT);// envia a distancia
+     Msg_Midia(2);
+          
+  return true;
+}
